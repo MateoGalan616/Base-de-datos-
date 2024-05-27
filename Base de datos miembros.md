@@ -1,4 +1,4 @@
-Crear tabla member:
+# Crear tabla member:
 
 CREATE TABLE member(
 id SERIAL,
@@ -8,7 +8,7 @@ age INT NOT NULL,
 PRIMARY KEY (id)
 );
 
-Crear tabla event:
+# Crear tabla event:
 
 CREATE TABLE event(
 id SERIAL,
@@ -17,8 +17,9 @@ end_date DATE NOT NULL,
 city VARCHAR (50) NOT NULL,
 PRIMARY KEY (id)
 );
+![alt text](image.png)
 
-Crear tabla conferencia:
+# Crear tabla conferencia:
 
 CREATE TABLE conference (
     id INT PRIMARY KEY,
@@ -31,7 +32,7 @@ CREATE TABLE conference (
     FOREIGN KEY (event_id) REFERENCES event(id)
 );
 
-Crear tabla register:
+# Crear tabla register:
 
 CREATE TABLE register (
     id INT PRIMARY KEY,
@@ -42,6 +43,7 @@ CREATE TABLE register (
     FOREIGN KEY (member_id) REFERENCES member(id),
     FOREIGN KEY (conference_id) REFERENCES conference(id)
 )
+![alt text](image-1.png)
 
 **Insertar valores a la tabla member:**
 
@@ -51,7 +53,7 @@ INSERT INTO member (fullname, email, age) VALUES
 ('Charlie Brown', 'charlie.brown@example.com', 45),
 ('Diana Prince', 'diana.prince@example.com', 30),
 ('Evan Green', 'evan.green@example.com', 26);
-
+![alt text](image-2.png)
 
 **Insertar valores a la tabla event:**
 
@@ -61,7 +63,7 @@ INSERT INTO event (start_date, end_date, city) VALUES
 ('2023-09-01', '2023-09-03', 'Chicago'),
 ('2023-10-05', '2023-10-07', 'Houston'),
 ('2023-11-20', '2023-11-22', 'Miami');
-
+![alt text](image-3.png)
 
 **Insertar valores a la tabla conference:**
 INSERT INTO conference (id, title, speaker, hour, day, total_attendees, event_id) VALUES
@@ -70,7 +72,7 @@ INSERT INTO conference (id, title, speaker, hour, day, total_attendees, event_id
 (3, 'Healthcare Advances', 'Dr. Meredith Grey', '09:00:00', '2023-08-15', 100, 2),
 (4, 'Climate Change Solutions', 'Greta Thunberg', '11:00:00', '2023-09-01', 180, 3),
 (5, 'Blockchain Revolution', 'Vitalik Buterin', '13:00:00', '2023-10-05', 220, 4);
-
+![alt text](image-4.png)
 
 
 **Insertar valores a la tabla register:**
@@ -81,36 +83,37 @@ INSERT INTO register (id, member_id, conference_id, registered_at, assisted) VAL
 (3, 3, 3, '2023-07-20', FALSE),
 (4, 4, 4, '2023-08-10', TRUE),
 (5, 5, 5, '2023-09-15', FALSE);
-
+![alt text](image-5.png)
 
 
 **CONSULTAS**
 1. Filtrar a los miembros que tengan más de 30 años de edad:
 SELECT * FROM member
 WHERE age > 30;
+![alt text](image-6.png)
 
 2. Filtrar las conferencias que se realizaron dentro de un es completo:
 SELECT * FROM conference
 WHERE day BETWEEN '2023-08-01' AND '2023-08-31';
-
+![alt text](image-7.png)
 
 3. Filtrar los eventos en los cuales han asistido menos de 200 personas:
 SELECT event.*
 FROM event
 JOIN conference ON event.id = conference.event_id
 WHERE conference.total_attendees < 200;
-
+![alt text](image-8.png)
 
 
 4. Filtrar si un miembro asisió o no a la conferencia, filtrando el id del registro, id del miembro y si asistió o no:
 SELECT id AS register_id, member_id, assisted
 FROM register;
-
+![alt text](image-9.png)
 
 
 5. Filtrar un registro que se ha registrado el día 2024-06-01
 SELECT * FROM register
 WHERE registered_at = '2023-06-01';
-
+![alt text](image-10.png)
 
 
