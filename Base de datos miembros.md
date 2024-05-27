@@ -90,11 +90,15 @@ INSERT INTO register (id, member_id, conference_id, registered_at, assisted) VAL
 1. Filtrar a los miembros que tengan más de 30 años de edad:
 SELECT * FROM member
 WHERE age > 30;
+El comando que proporcionaste es una consulta SQL que recupera todas las columnas de la tabla member donde el valor de la columna age es mayor que 30.
+En otras palabras, esta consulta selecciona todos los registros de la tabla member donde la edad (age) de los miembros es mayor que 30.
 ![alt text](image-6.png)
 
 2. Filtrar las conferencias que se realizaron dentro de un es completo:
 SELECT * FROM conference
 WHERE day BETWEEN '2023-08-01' AND '2023-08-31';
+selecciona todas las columnas de la tabla conference donde el valor de la columna day se encuentra entre el 1 de agosto de 2023 y el 31 de agosto de 2023, inclusive.
+En otras palabras, esta consulta devuelve todos los registros de la tabla conference que corresponden a conferencias que tuvieron lugar durante el mes de agosto de 2023. La cláusula BETWEEN se utiliza para especificar un rango de valores inclusivo para la columna day.
 ![alt text](image-7.png)
 
 3. Filtrar los eventos en los cuales han asistido menos de 200 personas:
@@ -102,6 +106,7 @@ SELECT event.*
 FROM event
 JOIN conference ON event.id = conference.event_id
 WHERE conference.total_attendees < 200;
+selecciona todas las columnas de la tabla event para aquellos eventos que están asociados a conferencias con menos de 200 asistentes.
 ![alt text](image-8.png)
 
 
@@ -109,11 +114,12 @@ WHERE conference.total_attendees < 200;
 SELECT id AS register_id, member_id, assisted
 FROM register;
 ![alt text](image-9.png)
-
+selecciona tres columnas de la tabla register: id, member_id y assisted. Además, renombra la columna id como register_id en el resultado de la consulta.
 
 5. Filtrar un registro que se ha registrado el día 2024-06-01
 SELECT * FROM register
 WHERE registered_at = '2023-06-01';
+selecciona todos los registros de la tabla register donde el valor de la columna registered_at es igual a '2023-06-01'.
 ![alt text](image-10.png)
 
 
